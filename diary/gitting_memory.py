@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function
 import argparse
+import codecs
 import glob
 from os import path
 import os
@@ -56,12 +57,11 @@ def convert_day_file(from_path, to_path):
     :type from_path: string
     :type to_path: string
     """
-    with open(from_path) as from_file:
-        with open(to_path, 'w') as to_file:
+    with codecs.open(from_path, encoding='gbk') as from_file:
+        with codecs.open(to_path, 'w', encoding='utf-8') as to_file:
             for line in from_file:
-                line = line.decode('gbk')
                 line = line.rstrip('\r\n')
-                to_file.write(line.encode('utf-8'))
+                to_file.write(line)
                 to_file.write('\n')
 
 
