@@ -31,7 +31,7 @@ def finalize_year(year, auto_push=False, first_month=1, last_month=12):
     for month in xrange(first_month, last_month + 1):
         git('push', 'origin', '--delete', DateFormatter.format_month_branch(year, month), is_preview=is_preview)
 
-    git('push', is_preview=is_preview)
+    git('push', '--all', is_preview=is_preview)
 
 
 def main():
